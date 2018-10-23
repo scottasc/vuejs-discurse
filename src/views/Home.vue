@@ -1,23 +1,23 @@
 <template>
 
-  <div class="home" :style="{ backgroundColor: `rgb(${thought.red}, ${thought.green}, ${thought.blue})` }"> 
+  <div class="home"> 
 
     <form v-on:submit.prevent="submit()">
-      <label>Enter a thought:</label>
+      <label>---></label>
       <input type="text" class="form-control" v-model="content">
       <input type="submit" class="btn btn-primary" value="Submit">
     </form>
 
+    <button v-on:click="changeColor()">Color time?</button>
+
   </div>
+
 </template>
 
 <style>
 
-.home {
+body {
   transition: 7s;
-  width: 100%;
-  height: 100%;
-  margin: 0px;
 }
 
 </style>
@@ -44,6 +44,7 @@ export default {
           this.errors = error.response.data.errors;
         });
         this.content = "";
+        document.body.style.backgroundColor = `rgb(${this.thought.red}, ${this.thought.green}, ${this.thought.blue})`;
     }
   }
 };
