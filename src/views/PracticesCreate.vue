@@ -1,6 +1,6 @@
 <template>
   <div class="practices-new">
-    <h1>{{practice}}</h1>
+    <h1>Session ID: {{practice.id}}</h1>
   
   <div>
   <button v-on:click="createPractice()">Create a practice</button>
@@ -10,6 +10,10 @@
 </template>
 
 <style>
+
+.practice-new {
+  height: 1000px;
+}
 </style>
 
 <script>
