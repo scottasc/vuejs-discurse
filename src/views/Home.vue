@@ -5,13 +5,13 @@
 
 
     <section id="banner">
+
       <div class="inner">
         <h2>Capstone</h2>
         <p>Free online color therapy</p>
-        <ul class="actions special">
-          <li><a href="/#/thoughts/new" class="button primary">Try it</a></li>
-        </ul>
+        <button class="actions special button primary" v-on:click="createPractice()">Try it</button>
       </div>
+
       <a href="#one" class="more scrolly">Learn More</a>
     </section>
 
@@ -19,7 +19,7 @@
       <div class="inner">
         <header class="major">
           <h2>DEAR GOD WHAT IS THIS PLACE</h2>
-          <p>Using the secrets of medieval Islamic color psychology, Capstone listens to your thoughts and shows you a color to make you feel nice.</p>
+          <p>Using the closely-guarded secrets of medieval Islamic color psychology, Capstone listens to your thoughts and picks a special color just for you.</p>
         </header>
         <ul class="icons major">
           <li><span class="icon fa-diamond major style1"><span class="label">Lorem</span></span></li>
@@ -28,17 +28,20 @@
       </div>
     </section>
 
-     <section id="cta" class="wrapper style4">
-        <div class="inner">
-          <header>
-            <h2>it's free</h2>
-          </header>
-          <ul class="actions stacked">
-            <li><a href="#/signup" class="button fit primary">Sign up</a></li>
-            <li><a href="#/login" class="button fit">Log in</a></li>
-          </ul>
-        </div>
-      </section>
+    
+
+    <section id="cta" class="wrapper style4">
+      <div class="inner">
+        <header>
+          <h2>It's free</h2>
+          <p>And it makes you feel nice.</p>
+        </header>
+        <ul class="actions stacked">
+          <li><a href="/#/signup" class="button fit primary">Sign Up</a></li>
+          <li><a href="/#/login" class="button fit">Log In</a></li>
+        </ul>
+      </div>
+    </section>
 
 
 
@@ -50,14 +53,23 @@
 </style>
 
 <script>
+import axios from "axios";
 export default {
   data: function() {
     return {
-      message: "Welcome to Vue.js!"
+      practice: {}
     };
   },
   created: function() {},
-  methods: {},
-  computed: {}
-};
+  methods: {
+    createPractice: function() {
+      axios
+        .post("http://localhost:3000/api/practices")
+        .then(response => {
+          this.practice = response.data;
+        });
+        location.href = "/#/thoughts/new"
+      }
+    }
+  }
 </script>

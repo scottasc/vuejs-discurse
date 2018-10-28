@@ -59,7 +59,7 @@ export default {
           .post("http://localhost:3000/api/thoughts", params)
           .then(response => {
             this.thought = response.data;
-            document.body.style.backgroundColor = `rgba(${this.thought.red}, ${this.thought.green}, ${this.thought.blue}, .4)`;
+            document.body.style.backgroundColor = `rgba(${this.thought.red}, ${this.thought.green}, ${this.thought.blue}, .5)`;
           })
           .catch(errors => {
             this.errors = errors.response.data;

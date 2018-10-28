@@ -4,9 +4,9 @@
     <h1 id="dashboard">Dashboard</h1>
 
     <div v-for="practice in practices">
-      <h2>Session ID: {{ practice.id }}</h2>
+      <h2>Session {{ practice.id }}</h2>
       <ul>
-        <li>Number of thoughts: {{ practice.thought_count }}</li>
+        <li>Thoughts: {{ practice.thought_count }}</li>
         <li>Sadness: {{ practice.sadness }}</li>
         <li>Joy: {{ practice.joy }}</li>
         <li>Disgust: {{ practice.disgust }}</li>
@@ -24,7 +24,7 @@ ul {
 }
 
 #dashboard {
-  padding-top: 20px;
+  padding-top: 100px;
   font-size: 75px;
 }
 </style>
