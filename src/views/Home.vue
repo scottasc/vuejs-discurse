@@ -1,19 +1,21 @@
 <template>
   <div class="home">
     
-
-
-
     <section id="banner">
 
       <div class="inner">
         <h2>Capstone</h2>
         <p>Free online color therapy</p>
         <button class="actions special button primary" v-on:click="createPractice()">Try it</button>
+        <button class="actions special button primary" v-on:click="show = !show">Show modal</button>
       </div>
 
       <a href="#one" class="more scrolly">Learn More</a>
     </section>
+
+    <div>
+    <modal v-if="show" id="hide"></modal>
+    </div>s
 
      <section id="one" class="wrapper style1 special">
       <div class="inner">
@@ -27,8 +29,6 @@
         </ul>
       </div>
     </section>
-
-    
 
     <section id="cta" class="wrapper style4">
       <div class="inner">
@@ -53,11 +53,16 @@
 </style>
 
 <script>
+import Modal from './Modal';
 import axios from "axios";
 export default {
+  components: {
+    'modal': Modal
+  },
   data: function() {
     return {
-      practice: {}
+      practice: {},
+      show: false
     };
   },
   created: function() {},
@@ -69,7 +74,7 @@ export default {
           this.practice = response.data;
         });
         location.href = "/#/thoughts/new"
-      }
     }
   }
+}
 </script>
