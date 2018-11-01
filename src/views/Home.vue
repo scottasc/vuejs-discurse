@@ -4,10 +4,11 @@
     <section id="banner">
 
       <div class="inner">
-        <h2>Capstone</h2>
+        <h2>Huely</h2>
         <p>Free online color therapy</p>
+
         <button class="actions special button primary" v-on:click="createPractice()">Try it</button>
-        <button class="actions special button primary" v-on:click="show = !show">Show modal</button>
+        <button class="actions special button primary" v-on:click="showModal()">Show modal</button>
       </div>
 
       <a href="#one" class="more scrolly">Learn More</a>
@@ -15,7 +16,7 @@
 
     <div>
     <modal v-if="show" id="hide"></modal>
-    </div>s
+    </div>
 
      <section id="one" class="wrapper style1 special">
       <div class="inner">
@@ -29,21 +30,6 @@
         </ul>
       </div>
     </section>
-
-    <section id="cta" class="wrapper style4">
-      <div class="inner">
-        <header>
-          <h2>It's free</h2>
-          <p>And it makes you feel nice.</p>
-        </header>
-        <ul class="actions stacked">
-          <li><a href="/#/signup" class="button fit primary">Sign Up</a></li>
-          <li><a href="/#/login" class="button fit">Log In</a></li>
-        </ul>
-      </div>
-    </section>
-
-
 
   </div>
 </template>
@@ -65,7 +51,8 @@ export default {
       show: false
     };
   },
-  created: function() {},
+  created: function() {
+  },
   methods: {
     createPractice: function() {
       axios
@@ -74,7 +61,16 @@ export default {
           this.practice = response.data;
         });
         location.href = "/#/thoughts/new"
+    },
+    showModal: function() {
+      this.show = !this.show;
     }
+  },
+  mounted: function() {
+    this.$on('setFalse', function(value) {
+      this.show = value;
+    });
   }
 }
 </script>
+

@@ -1,7 +1,8 @@
 <template>
-  <div class="modal-backdrop">
+  <div class="modal-backdrop" v-show="modalGone">
 
     <div class="modal">
+      <button ref="closeModal" class="button primary close-modal-button" v-on:click="hideModal(), setFalse()">X</button>
       <header class="modal-header">
           <button class="actions special button primary" v-on:click="signup = !signup, loginButton = false" v-if="!signup && signupButton">
             Sign up
@@ -38,6 +39,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 500;
   }
 
   .modal {
@@ -48,6 +50,8 @@
     flex-direction: column;
     display: center;
     padding: 60px;
+    z-index: -500;
+    position: relative;
   }
 
   .modal-header {
@@ -56,6 +60,13 @@
 
   .modal-footer {
     padding-top: 40px;
+  }
+
+  .close-modal-button {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    box-shadow: 2px 2px 20px -10px;
   }
 
  
@@ -76,10 +87,17 @@ export default {
       login: false,
       loginButton: true,
       signupButton: true,
-      show: true
+      modalGone: true
     }
   },
   name: 'modal',
-  methods: {}
+  methods: {
+    hideModal: function() {
+      this.modalGone = false
+    },
+    setFalse: function() {
+      this.$parent.$emit('setFalse', false)
+    }
+  }
 };
 </script>
