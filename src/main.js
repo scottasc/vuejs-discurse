@@ -2,7 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import axios from "axios";
+import Trend from 'vuetrend'
 
+Vue.use(Trend)
 
 var jwt = localStorage.getItem("jwt");
 if (jwt) {

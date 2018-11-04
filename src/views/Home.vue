@@ -7,8 +7,8 @@
         <h2>Huely</h2>
         <p>Free online color therapy</p>
 
-        <button class="actions special button primary" v-on:click="createPractice()">Try it</button>
-        <button class="actions special button primary" v-on:click="showModal()">Show modal</button>
+        <button class="actions special button primary" v-on:click="createPractice()">Begin</button>
+        <button class="actions special button primary" v-on:click="showModal()">Login</button>
       </div>
 
       <a href="#one" class="more scrolly">Learn More</a>

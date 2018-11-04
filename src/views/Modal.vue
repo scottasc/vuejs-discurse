@@ -69,8 +69,6 @@
     box-shadow: 2px 2px 20px -10px;
   }
 
- 
-
 </style>
 
 <script>

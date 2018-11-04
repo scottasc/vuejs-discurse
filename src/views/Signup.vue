@@ -52,7 +52,7 @@ export default {
       axios
         .post("http://localhost:3000/api/users", params)
         .then(response => {
-          this.$router.push("/login");
+          this.$router.push("/");
         })
         .catch(error => {
           this.errors = error.response.data.errors;

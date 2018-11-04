@@ -1,18 +1,59 @@
 <template>
   <div class="dashboard">
 
-    <h1 id="dashboard">Dashboard</h1>
+    <h1 id="dash-header">Dash</h1>
+    <h2 id="dash-header2">{{practices.length}} sessions</h2>
+    <hr>
+    
+    <h4>Number of thoughts by session</h4>
+    <trend
+      :data="thoughts"
+      :gradient="['#6fa8dc', '#42b983', '#2c3e50']"
+      auto-draw
+      smooth
+      auto-draw-duration=7000
+      auto-draw-easing="ease-in">
+    </trend>
+    
+    <h4>Joy by session</h4>
+    <trend
+      :data="joy"
+      :gradient="['#6fa8dc', '#42b983', '#2c3e50']"
+      auto-draw
+      smooth
+      auto-draw-duration=7000
+      auto-draw-easing="ease-in">
+    </trend>
 
-    <div v-for="practice in practices">
-      <h2>Session {{ practice.id }}</h2>
-      <ul>
-        <li>Thoughts: {{ practice.thought_count }}</li>
-        <li>Sadness: {{ practice.sadness }}</li>
-        <li>Joy: {{ practice.joy }}</li>
-        <li>Disgust: {{ practice.disgust }}</li>
-        <li>Fear: {{ practice.fear }}</li>
-      </ul>
-  </div>
+    <h4>Sadness by session</h4>
+    <trend
+      :data="sadness"
+      :gradient="['#6fa8dc', '#42b983', '#2c3e50']"
+      auto-draw
+      smooth
+      auto-draw-duration=7000
+      auto-draw-easing="ease-in">
+    </trend>
+
+    <h4>Fear by session</h4>
+    <trend
+      :data="fear"
+      :gradient="['#6fa8dc', '#42b983', '#2c3e50']"
+      auto-draw
+      smooth
+      auto-draw-duration=7000
+      auto-draw-easing="ease-in">
+    </trend>
+
+    <h4>Disgust by session</h4>
+     <trend
+      :data="disgust"
+      :gradient="['#6fa8dc', '#42b983', '#2c3e50']"
+      auto-draw
+      smooth
+      auto-draw-duration=7000
+      auto-draw-easing="ease-in">
+    </trend>
 
   </div>
 </template>
@@ -23,10 +64,23 @@ ul {
   list-style-type: none;
 }
 
-#dashboard {
+#dash-header {
   padding-top: 100px;
   font-size: 75px;
+  line-height: 20%;
 }
+
+#dash-header2 {
+  line-height: 10%;
+}
+
+hr {
+  background: linear-gradient(to right, white, lightgray, #6fa8dc);
+  height: 10px;
+  border: none;
+}
+
+
 </style>
 
 <script>
@@ -34,14 +88,30 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      practices: {}
+      practices: [],
+      thoughts: [],
+      joy: [],
+      sadness: [],
+      fear: [],
+      anger: [],
+      disgust: []
     };
   },
   created: function() {
-      axios
+  },
+  mounted: function() {
+    axios
         .get("http://localhost:3000/api/practices")
         .then(response => {
           this.practices = response.data;
+          for (var i = 0, len = response.data.length; i < len; i++) {
+            this.thoughts.push(response.data[i].thought_count);
+            this.joy.push(response.data[i].joy * 10);
+            this.sadness.push(response.data[i].sadness * 10);
+            this.fear.push(response.data[i].fear * 10);
+            this.disgust.push(response.data[i].disgust * 10);
+            this.sadness.push(response.data[i].sadness * 10);
+           }
         });
   },
   methods: {}

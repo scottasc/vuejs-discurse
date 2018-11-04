@@ -2,16 +2,15 @@
 
   <div class="thoughts-new"> 
 
+
     <div class="input">
       <form v-on:submit.prevent="submit()">
         <label v-if="errors">{{errors}}</label>
-        <label v-else>Tell me stuff.</label>
+        <label v-else>Say stuff</label>
         <input type="text" class="form-control" v-model="content">
-        <input type="submit" class="btn btn-primary">
       </form>
+      <div><button class="end-btn btn btn-primary" v-on:click="endSession()">End session</button></div>
     </div>
-
-  <!--   <h2>{{errors}}</h2> -->
 
   </div>
 
@@ -37,6 +36,7 @@ body {
   transition: 6s;
 }
 
+
 </style>
 
 <script>
@@ -46,7 +46,8 @@ export default {
     return {
       content: "",
       thought: {red: 255, green: 255, blue: 255},
-      errors: ""
+      errors: "",
+      practice: {}
     };
   },
   created: function() {},
@@ -66,9 +67,14 @@ export default {
           });
           this.content = "";
       } else {
-        this.errors = "At least 15 characters worth of stuff."
+        this.errors = "At least 15 characters worth of stuff"
       }
-    }
+    },
+    endSession: function(){
+      axios
+        .patch("http://localhost:3000/api/practices")
+        .then(this.$router.push("/dashboard"));
+      }
   }
 };
 </script>
