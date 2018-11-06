@@ -1,16 +1,17 @@
 <template>
   <div class="home">
-    
+
+    <h6 v-if="localStorage">Logged in</h6>
+
     <section id="banner">
 
-      <div class="inner">
+      <div class="inner1">
         <h2>Huely</h2>
-        <p>Free online color therapy</p>
-
-        <h1>{{localStorage}}</h1>
+        <h3>Free online color therapy</h3>
         
-        <button class="actions special button primary" v-on:click="createPractice()">Begin</button>
-        <button class="actions special button primary" v-on:click="showModal()">Login</button>
+        <button class="actions special button primary" v-if="localStorage" v-on:click="createPractice()">Begin</button>
+        <button class="actions special button primary" v-else v-on:click="showModal()">Begin</button>
+
       </div>
 
       <a href="#one" class="more scrolly">Learn More</a>
@@ -21,10 +22,10 @@
     </div>
 
      <section id="one" class="wrapper style1 special">
-      <div class="inner">
+      <div class="inner2">
         <header class="major">
           <h2>DEAR GOD WHAT IS THIS PLACE</h2>
-          <p>Using the closely-guarded secrets of medieval Islamic color psychology, Capstone listens to your thoughts and picks a special color just for you.</p>
+          <p>Using the closely-guarded secrets of quack science, Huely listens to your thoughts and picks special colors just for you.</p>
         </header>
         <ul class="icons major">
           <li><span class="icon fa-diamond major style1"><span class="label">Lorem</span></span></li>
@@ -37,6 +38,15 @@
 </template>
 
 <style>
+
+
+.home {
+  background:radial-gradient(ellipse at bottom, rgba(255,254,234,1) 0%, rgba(255,254,234,1) 35%, #B7E8EB 75%);
+}
+
+.inner1 {
+  bottom: 20%;
+}
 
 </style>
 

@@ -10,14 +10,6 @@
 
 <style>
 
-// best seen at 1500px or less
-
-
-body {
-  background:radial-gradient(ellipse at center, rgba(255,254,234,1) 0%, rgba(255,254,234,1) 35%, #B7E8EB 100%);
-  overflow: hidden;
-}
-
 .ocean { 
   height: 18%;
   width:100%;
