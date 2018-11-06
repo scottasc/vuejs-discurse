@@ -7,6 +7,8 @@
         <h2>Huely</h2>
         <p>Free online color therapy</p>
 
+        <h1>{{localStorage}}</h1>
+        
         <button class="actions special button primary" v-on:click="createPractice()">Begin</button>
         <button class="actions special button primary" v-on:click="showModal()">Login</button>
       </div>
@@ -48,7 +50,8 @@ export default {
   data: function() {
     return {
       practice: {},
-      show: false
+      show: false,
+      localStorage: localStorage.jwt
     };
   },
   created: function() {

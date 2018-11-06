@@ -4,8 +4,9 @@
     <h1 id="dash-header">Dash</h1>
     <h2 id="dash-header2">{{practices.length}} sessions</h2>
     <hr>
+    <h4 v-if="practices.length < 2">You need at least 2 sessions for the dash to work.</h4>
     
-    <h4>Number of thoughts by session</h4>
+    <h4>Thoughts by session</h4>
     <trend
       :data="thoughts"
       :gradient="['#6fa8dc', '#42b983', '#2c3e50']"
@@ -48,6 +49,16 @@
     <h4>Disgust by session</h4>
      <trend
       :data="disgust"
+      :gradient="['#6fa8dc', '#42b983', '#2c3e50']"
+      auto-draw
+      smooth
+      auto-draw-duration=7000
+      auto-draw-easing="ease-in">
+    </trend>
+
+    <h4>Anger by session</h4>
+    <trend
+      :data="anger"
       :gradient="['#6fa8dc', '#42b983', '#2c3e50']"
       auto-draw
       smooth
@@ -110,7 +121,7 @@ export default {
             this.sadness.push(response.data[i].sadness * 10);
             this.fear.push(response.data[i].fear * 10);
             this.disgust.push(response.data[i].disgust * 10);
-            this.sadness.push(response.data[i].sadness * 10);
+            this.anger.push(response.data[i].anger * 10);
            }
         });
   },
