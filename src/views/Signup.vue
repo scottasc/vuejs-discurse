@@ -28,6 +28,14 @@
   </div>
 </template>
 
+<style>
+
+label {
+  color: #4d4d4d;
+}
+
+</style>
+
 <script>
 import axios from "axios";
 

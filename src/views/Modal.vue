@@ -1,15 +1,19 @@
 <template>
   <div class="modal-backdrop" v-show="modalGone">
-
+    
     <div class="modal">
-      <button ref="closeModal" class="button primary close-modal-button" v-on:click="hideModal(), setFalse()">X</button>
+      <button ref="closeModal" class="close-modal-button" v-on:click="hideModal(), setFalse()"></button>
+
       <header class="modal-header">
           <button class="actions special button primary" v-on:click="signup = !signup, loginButton = false" v-if="!signup && signupButton">
             Sign up
           </button>
       </header>
+
       <div class="signup">
+       <transition name="fade">
        <signup v-if="signup"></signup>
+       </transition>
       </div>
 
        <footer class="modal-footer">
@@ -19,15 +23,28 @@
       </footer>
 
       <div class="login">
+        <transition name="fade">
         <login v-if="login"></login>
+        </transition>
       </div>
 
     </div>
 
   </div>
+
 </template>
 
 <style>
+
+  .fade-enter-active {
+    transition: all .3s ease;
+  }
+  .fade-leave-active {
+    transition: all .3s ease;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
 
   .modal-backdrop {
     position: fixed;
@@ -43,8 +60,8 @@
   }
 
   .modal {
-    background: #2e3842;
-    box-shadow: 2px 2px 20px 2px;
+    background: #B7E8EB;
+    box-shadow: 1px 1px 200px 1px;
     opacity: 1;
     display: flex;
     flex-direction: column;
@@ -52,6 +69,7 @@
     padding: 60px;
     z-index: -500;
     position: relative;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 
   .modal-header {
@@ -64,9 +82,25 @@
 
   .close-modal-button {
     position: absolute;
-    top: 0px;
-    right: 0px;
-    box-shadow: 2px 2px 20px -10px;
+    top: 0;
+    right: 0;
+    box-shadow: none;
+    background-image: url("../../public/assets/css/images/close.svg");
+    background-position: 4.25em 1.2em;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    display: block;
+    height: 3em;
+    position: absolute;
+    right: 0;
+    top: 0;
+    vertical-align: middle;
+    width: 7em;
+  }
+
+  .close-modal-button:hover {
+    background-color: rgba(0,0,0,0) !important;
+    border-color: rgba(0,0,0,0) !important;
   }
 
 </style>

@@ -17,9 +17,9 @@
       <a href="#one" class="more scrolly">Learn More</a>
     </section>
 
-    <div>
-    <modal v-if="show" id="hide"></modal>
-    </div>
+      <div>
+      <transition name="fade"><modal v-if="show"></modal></transition>
+      </div>
 
      <section id="one" class="wrapper style1 special">
       <div class="inner2">
@@ -28,7 +28,6 @@
           <p>Using the closely-guarded secrets of quack science, Huely listens to your thoughts and picks special colors just for you.</p>
         </header>
         <ul class="icons major">
-          <li><span class="icon fa-diamond major style1"><span class="label">Lorem</span></span></li>
           <li><span class="icon fa-heart-o major style2"><span class="label">Ipsum</span></span></li>
         </ul>
       </div>
@@ -39,6 +38,15 @@
 
 <style>
 
+.fade-enter-active {
+  transition: all .3s ease;
+}
+.fade-leave-active {
+  transition: all .s ease;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
 
 .home {
   background:radial-gradient(ellipse at bottom, rgba(255,254,234,1) 0%, rgba(255,254,234,1) 35%, #B7E8EB 75%);

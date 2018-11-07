@@ -1,10 +1,11 @@
 <template>
-  <div class="dashboard">
+
+  <h1 class="less-two" v-if="practices.length < 2">You need at least 2 sessions for the dash to work.</h1>
+  <div v-else class="dashboard">
 
     <h1 id="dash-header">Dash</h1>
     <h2 id="dash-header2">{{practices.length}} sessions</h2>
     <hr>
-    <h4 v-if="practices.length < 2">You need at least 2 sessions for the dash to work.</h4>
     
     <h4>Thoughts by session</h4>
     <trend
@@ -70,6 +71,10 @@
 </template>
 
 <style>
+
+.less-two {
+  padding-top: 200px;
+}
 
 ul {
   list-style-type: none;
