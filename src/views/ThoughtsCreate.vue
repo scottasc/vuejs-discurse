@@ -8,6 +8,7 @@
 
     <wave v-if="wave"></wave>
 
+    <p>{{thought}}</p>
 
 
     <div class="input">
@@ -17,7 +18,7 @@
         <input type="text" class="form-control" v-model="content">
       </form>
 
-      <button class="end-btn btn btn-primary" v-on:click="endSession()">End session</button> 
+      <button class="end-btn btn btn-primary" v-on:click="endSession()">End<br/> session</button> 
 
       
       <div>
@@ -41,9 +42,14 @@
 <style>
 
 .end-btn {
-  margin-top: 3%;
-  float: left;
-  bottom: 13px;
+  color: black;
+  font-size: 16px;
+  height: 100px;  
+  width: 210px;
+  border: none;
+  box-shadow: none;
+  float: right;
+  bottom: 15px;
 }
 
 .input {
@@ -53,11 +59,11 @@
 }
 
 .thoughts-new {
-  height: 1000px;
+  height: 1180px;
 }
 
 .wave-btn {
-  background-image: url('http://chittagongit.com/images/waves-icon-png/waves-icon-png-20.jpg');
+  background-image: url('./wave.png');
 }
 
 .cloud-btn {
@@ -73,7 +79,7 @@
   height: 100px;  
   width: 106px;
   border: none;
-  float: right;
+  float: left;
   box-shadow: none;
   bottom: 15px;
 }
@@ -86,6 +92,10 @@ body {
 </style>
 
 <script>
+var jsHue = require('jshue');
+var hue = jsHue();
+var bridge = hue.bridge('10.0.0.210');
+var user = bridge.user('O-j-MtGZ85H0wcaFdIKhfzbC8QBMLDxcn5TkkHqs')
 import axios from "axios";
 import Clouds from '../components/Clouds';
 import Wave from '../components/Wave';
@@ -99,7 +109,7 @@ export default {
   data: function() {
     return {
       content: "",
-      thought: {red: 255, green: 255, blue: 255},
+      thought: {},
       errors: "",
       practice: {},
       wave: false,
@@ -118,6 +128,7 @@ export default {
           .then(response => {
             this.thought = response.data;
             document.body.style.backgroundColor = `rgba(${this.thought.red}, ${this.thought.green}, ${this.thought.blue}, .5)`;
+            user.setLightState(1, { bri: 50, xy: [parseFloat(this.thought.x_value), parseFloat(this.thought.y_value)] })
           })
           .catch(errors => {
             this.errors = errors.response.data;

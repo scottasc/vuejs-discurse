@@ -1,6 +1,6 @@
 <template>
 
-  <h1 class="less-two" v-if="practices.length < 2">You need at least 2 sessions for the dash to work.</h1>
+  <h1 class="less-two" v-if="practices.length < 2">You need at least 2 sessions for the dash to work. GO back to home on the side and then click "begin" again.</h1>
   <div v-else class="dashboard">
 
     <h1 id="dash-header">Dash</h1>
