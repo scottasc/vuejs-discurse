@@ -8,8 +8,6 @@
 
     <wave v-if="wave"></wave>
 
-    <p>{{thought}}</p>
-
 
     <div class="input">
       <form v-on:submit.prevent="submit()">
@@ -31,6 +29,10 @@
 
       <div>
       <button class="wave-btn" v-on:click="toggleWave()"></button>
+      </div>
+
+      <div>
+      <button class="bulb-btn" v-on:click="powerSwitch()"></button>
       </div>
 
     </div>
@@ -59,7 +61,7 @@
 }
 
 .thoughts-new {
-  height: 1180px;
+  height: 950px;
 }
 
 .wave-btn {
@@ -74,7 +76,11 @@
   background-image: url('http://icons.iconarchive.com/icons/iconsmind/outline/128/Bird-icon.png');
 }
 
-.wave-btn, .cloud-btn, .bird-btn {
+.bulb-btn {
+  background-image: url('/../../../assets/css/images/bulb.png');
+}
+
+.wave-btn, .cloud-btn, .bird-btn, .bulb-btn {
   background-size: 106px 100px;
   height: 100px;  
   width: 106px;
@@ -85,7 +91,7 @@
 }
 
 body {
-  transition: 6s;
+  transition: 5s;
 }
 
 
@@ -114,11 +120,16 @@ export default {
       practice: {},
       wave: false,
       clouds: false,
-      bird: false
+      bird: false,
+      power: true
     };
   },
   created: function() {},
   methods: {
+    powerSwitch: function() {
+      user.setLightState(1, {on: this.power});
+      this.power = !this.power;
+    },
     submit: function() {
       if (this.content && this.content.length > 15) {
         this.errors = ""
@@ -128,7 +139,7 @@ export default {
           .then(response => {
             this.thought = response.data;
             document.body.style.backgroundColor = `rgba(${this.thought.red}, ${this.thought.green}, ${this.thought.blue}, .5)`;
-            user.setLightState(1, { bri: 50, xy: [parseFloat(this.thought.x_value), parseFloat(this.thought.y_value)] })
+            user.setLightState(1, { transitiontime: 50, bri: 50, xy: [parseFloat(this.thought.x_value), parseFloat(this.thought.y_value)]})
           })
           .catch(errors => {
             this.errors = errors.response.data;
@@ -142,6 +153,7 @@ export default {
       axios
         .patch("http://localhost:3000/api/practices")
         .then(this.$router.push("/dashboard"));
+      user.setLightState(1, {on: false});
       },
     toggleClouds: function() {
       this.clouds = !this.clouds;

@@ -1,38 +1,23 @@
 <template>
-  <div class="home">
+  <div class="hue">
 
 
-
-  
-   <div>
-  <button class="onoff" v-on:click="changeColor()">Change color</button>
-  </div>
-
-  <button v-on:click="test()">Find bridge</button>
    <button v-on:click="makeUser()">Create user</button>
    <button v-on:click="whatsName()">Name?</button>
    <button v-on:click="newUser()">New user</button>
 
-     <div>
-  <button class="onoff" v-on:click="turnOn()">Turn on</button>
+  <div>
+  <button class="actions special button primary" v-on:click="turnOn()">Turn on</button>
   </div>
 
-     <div>
-  <button class="onoff" v-on:click="turnOff()">Turn off</button>
+  <div>
+  <button class="actions special button primary" v-on:click="turnOff()">Turn off</button>
   </div>
 
-
-  <form v-on:submit="changeColor()">
-    <label>X:</label>
-    <input type="decimal" class="form-control" v-model="xValue">
-    <label>Y:</label>
-    <input type="decimal" class="form-control-1" v-model="yValue">
-    <input type="submit" class="btn btn-primary" value="Submit">
-  </form>
-
-  <h1>{{xValue}}</h1>
-  <h1>{{yValue}}</h1>
-
+  <div>
+  <button class="actions special button primary" v-on:click="test()">Find bridge</button>
+  <h2>{{bridgeInfo}}</h2>
+  </div>
 
   </div>
 </template>
@@ -58,17 +43,15 @@ export default {
   name: 'home',
   data: function() {
     return {
-      xValue: .1111,
-      yValue: .8888
+      bridgeInfo: "",
+      powerSwitch: true
     };
   },
   components: {},
   methods: {
-    changeColor: function() {
-      user.setLightState(1, { sat: 50, bri: 100, xy: [this.xValue, this.yValue] })
-    },
     turnOn: function() {
-      user.setLightState(1, {on: true});
+      user.setLightState(1, {on: this.powerSwitch});
+      this.powerSwitch = !this.powerSwitch
     },
     turnOff: function() {
       user.setLightState(1, {on: false});
@@ -83,12 +66,12 @@ export default {
     test: function() {
       hue.discover().then(bridges => {
         if(bridges.length === 0) {
-         console.log('No bridges found. :(');
+         this.bridgeInfo = 'No bridges found. :(';
         }
         else {
-          bridges.forEach(b => console.log('Bridge found at IP address %s.', b.internalipaddress));
+          bridges.forEach(b => this.bridgeInfo = 'Bridge found at IP address ' + b.internalipaddress);
     }
-      }).catch(e => console.log('Error finding bridges', e));
+      }).catch(e => this.bridgeInfo = 'Error finding bridges', e);
     },
   makeUser: function() {
     bridge.createUser('scottaschuelyapp').then(data => {
