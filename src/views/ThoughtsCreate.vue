@@ -56,11 +56,13 @@
 .input {
   bottom: 0;
   position: absolute;
+  height: 30vh;
   width: 100%;
 }
 
 .thoughts-new {
-  height: 950px;
+  height: 100vh;
+  position: relative;
 }
 
 .wave-btn {
@@ -86,7 +88,6 @@
   border: none;
   float: left;
   box-shadow: none;
-  bottom: 15px;
 }
 
 body {
@@ -99,7 +100,7 @@ body {
 <script>
 var jsHue = require('jshue');
 var hue = jsHue();
-var bridge = hue.bridge('10.0.0.210');
+var bridge = hue.bridge('192.168.1.146');
 var user = bridge.user('O-j-MtGZ85H0wcaFdIKhfzbC8QBMLDxcn5TkkHqs')
 import axios from "axios";
 import Clouds from '../components/Clouds';
@@ -123,10 +124,12 @@ export default {
       power: true
     };
   },
-  created: function() {},
+  created: function() {
+    user.setLightState(1, {on: false});
+  },
   methods: {
     powerSwitch: function() {
-      user.setLightState(1, {on: this.power});
+      user.setLightState(1, {on: this.power, xy: [1, 1]});
       this.power = !this.power;
     },
     submit: function() {
@@ -138,10 +141,10 @@ export default {
           .then(response => {
             this.thought = response.data;
             document.body.style.backgroundColor = `rgba(${this.thought.red}, ${this.thought.green}, ${this.thought.blue}, .5)`;
-            user.setLightState(1, { transitiontime: 50, bri: 150, xy: [parseFloat(this.thought.x_value), parseFloat(this.thought.y_value)]})
+            user.setLightState(1, { transitiontime: 50, bri: 50, xy: [parseFloat(this.thought.x_value), parseFloat(this.thought.y_value)]})
           })
           .catch(errors => {
-            this.errors = errors.response.data;
+            this.errors = "You're either not logged in or using an unsupported language. Try again."
           });
           this.content = "";
       } else {

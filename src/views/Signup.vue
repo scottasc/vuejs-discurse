@@ -70,7 +70,7 @@ export default {
         .catch(error => {
           this.errors = error.response.data.errors;
         });
-      axios
+        return axios
         .post("http://localhost:3000/api/sessions", paramsLogin)
         .then(response => {
           axios.defaults.headers.common["Authorization"] =

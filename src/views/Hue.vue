@@ -33,6 +33,13 @@
   <button class="actions special button primary" v-on:click="turnOn()">Test</button>
   </div>
 
+  <div>
+  <button class="actions special button primary" v-on:click="makeUser()">Create user</button>
+  </div>
+
+  <div>
+  <button class="actions special button primary" v-on:click="newUser()">Make new user</button>
+  </div>
   
 
  
@@ -51,10 +58,11 @@
   }
 </style>
 
+
 <script>
 var jsHue = require('jshue');
 var hue = jsHue();
-var bridge = hue.bridge('10.0.0.210');
+var bridge = hue.bridge('192.168.1.146');
 var user = bridge.user('O-j-MtGZ85H0wcaFdIKhfzbC8QBMLDxcn5TkkHqs')
 
 export default {
@@ -101,6 +109,7 @@ export default {
       }).catch(e => this.bridgeInfo = 'Error finding bridges', e);
     },
   makeUser: function() {
+
     bridge.createUser('scottaschuelyapp').then(data => {
     // extract bridge-generated username from returned data
     console.log(data);

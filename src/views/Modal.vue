@@ -5,7 +5,7 @@
       <button ref="closeModal" class="close-modal-button" v-on:click="hideModal(), setFalse()"></button>
 
       <header class="modal-header">
-          <button class="actions special button primary" v-on:click="signup = !signup, loginButton = false" v-if="!signup && signupButton">
+          <button class="signup-btn actions special button primary" v-on:click="signup = !signup, loginButton = false" v-if="!signup && signupButton">
             Sign up
           </button>
       </header>
@@ -17,7 +17,7 @@
       </div>
 
        <footer class="modal-footer">
-          <button class="actions special button primary" v-on:click="login = !login, signupButton = false" v-if="!login && loginButton">
+          <button class="login-btn actions special button primary" v-on:click="login = !login, signupButton = false" v-if="!login && loginButton">
             Login
           </button>
       </footer>
@@ -68,16 +68,26 @@
     display: center;
     padding: 60px;
     z-index: -500;
-    position: relative;
+    position: absolute;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 
   .modal-header {
+    position: relative;
     padding-bottom: 10px; 
   }
 
   .modal-footer {
-    padding-top: 40px;
+    position: relative;
+    padding-top: 10px;
+  }
+
+  .login-btn {
+    bottom: 60px;
+  }
+
+  .signup-btn {
+    bottom: 20px;
   }
 
   .close-modal-button {

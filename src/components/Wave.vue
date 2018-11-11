@@ -11,7 +11,7 @@
 <style>
 
 .ocean { 
-  height: 18%;
+  height: 10%;
   width:100%;
   position:absolute;
   bottom:0;
