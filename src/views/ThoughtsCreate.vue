@@ -8,7 +8,6 @@
 
     <wave v-if="wave"></wave>
 
-
     <div class="input">
       <form v-on:submit.prevent="submit()">
         <label v-if="errors">{{errors}}</label>
@@ -139,7 +138,7 @@ export default {
           .then(response => {
             this.thought = response.data;
             document.body.style.backgroundColor = `rgba(${this.thought.red}, ${this.thought.green}, ${this.thought.blue}, .5)`;
-            user.setLightState(1, { transitiontime: 50, bri: 50, xy: [parseFloat(this.thought.x_value), parseFloat(this.thought.y_value)]})
+            user.setLightState(1, { transitiontime: 50, bri: 150, xy: [parseFloat(this.thought.x_value), parseFloat(this.thought.y_value)]})
           })
           .catch(errors => {
             this.errors = errors.response.data;
@@ -154,6 +153,7 @@ export default {
         .patch("http://localhost:3000/api/practices")
         .then(this.$router.push("/dashboard"));
       user.setLightState(1, {on: false});
+      document.body.style.backgroundColor = '#B7E8EB'
       },
     toggleClouds: function() {
       this.clouds = !this.clouds;

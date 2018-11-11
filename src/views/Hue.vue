@@ -1,31 +1,53 @@
 <template>
   <div class="hue">
 
+    <h2 v-if="userName">Username: {{userName}}</h2>
 
-   <button v-on:click="makeUser()">Create user</button>
-   <button v-on:click="whatsName()">Name?</button>
-   <button v-on:click="newUser()">New user</button>
+    <h2 v-if="iPaddress">IP address: {{iPaddress}}</h2>
+
+   <div>
+      <form v-on:submit="submit($event)">
+        <label>Username:</label>
+        <input type="text" class="form-control">
+      </form>
+    </div>
+
+    <div>
+      <form v-on:submit="submitIP($event)">
+        <label>Bridge IP address</label>
+        <input type="text" class="form-control">
+      </form>
+    </div>
 
   <div>
-  <button class="actions special button primary" v-on:click="turnOn()">Turn on</button>
-  </div>
-
-  <div>
-  <button class="actions special button primary" v-on:click="turnOff()">Turn off</button>
-  </div>
-
-  <div>
-  <button class="actions special button primary" v-on:click="test()">Find bridge</button>
+  <button class="actions special button primary" v-on:click="test()">Find bridge IP address</button>
   <h2>{{bridgeInfo}}</h2>
   </div>
+
+  <div>
+  <button class="actions special button primary" v-on:click="whatsName()">Get username</button>
+  <h2>{{userName}}</h2>
+  </div>
+
+  <div>
+  <button class="actions special button primary" v-on:click="turnOn()">Test</button>
+  </div>
+
+  
+
+ 
 
   </div>
 </template>
 
 <style>
+
+  .hue {
+    margin-top: 200px;
+  }
   
-  .onoff {
-    float: bottom;
+  .button {
+    margin-top: 100px;
   }
 </style>
 
@@ -35,20 +57,25 @@ var hue = jsHue();
 var bridge = hue.bridge('10.0.0.210');
 var user = bridge.user('O-j-MtGZ85H0wcaFdIKhfzbC8QBMLDxcn5TkkHqs')
 
-// import HelloWorld from '@/components/HelloWorld.vue'
-
-// https://www.meethue.com/api/nupnp
-
 export default {
   name: 'home',
   data: function() {
     return {
-      bridgeInfo: "",
+      bridgeInfo: '',
+      userName: '',
+      iPaddress: '',
       powerSwitch: true
     };
   },
   components: {},
   methods: {
+    submit: function(event) {
+      this.userName = event.target[0].value;
+      var user = bridge.user(this.userName)
+    },
+    submitIP: function(event) {
+      this.iPaddress = event.target[0].value;
+    },
     turnOn: function() {
       user.setLightState(1, {on: this.powerSwitch});
       this.powerSwitch = !this.powerSwitch

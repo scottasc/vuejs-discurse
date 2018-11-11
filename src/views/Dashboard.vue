@@ -1,6 +1,6 @@
 <template>
 
-  <h1 class="less-two" v-if="practices.length < 2">You need at least 2 sessions for the dash to work. GO back to home on the side and then click "begin" again.</h1>
+  <h1 class="less-two" v-if="practices.length < 2">You need at least 2 sessions for the dash to work. Go back to home on the side and then click "begin" again.</h1>
   <div v-else class="dashboard">
 
     <h1 id="dash-header">Dash</h1>
@@ -16,6 +16,7 @@
       auto-draw-duration=7000
       auto-draw-easing="ease-in">
     </trend>
+    <hr>
     
     <h4>Joy by session</h4>
     <trend
@@ -26,6 +27,7 @@
       auto-draw-duration=7000
       auto-draw-easing="ease-in">
     </trend>
+    <hr>
 
     <h4>Sadness by session</h4>
     <trend
@@ -36,6 +38,7 @@
       auto-draw-duration=7000
       auto-draw-easing="ease-in">
     </trend>
+    <hr>
 
     <h4>Fear by session</h4>
     <trend
@@ -46,6 +49,7 @@
       auto-draw-duration=7000
       auto-draw-easing="ease-in">
     </trend>
+    <hr>
 
     <h4>Disgust by session</h4>
      <trend
@@ -56,6 +60,7 @@
       auto-draw-duration=7000
       auto-draw-easing="ease-in">
     </trend>
+    <hr>
 
     <h4>Anger by session</h4>
     <trend
@@ -66,6 +71,7 @@
       auto-draw-duration=7000
       auto-draw-easing="ease-in">
     </trend>
+    <hr>
 
   </div>
 </template>
@@ -91,7 +97,7 @@ ul {
 }
 
 hr {
-  background: linear-gradient(to right, white, lightgray, #6fa8dc);
+  background: linear-gradient(to right, #B7E8EB, white, #B7E8EB);
   height: 10px;
   border: none;
 }

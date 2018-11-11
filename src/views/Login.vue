@@ -14,16 +14,20 @@
           <label>Password:</label>
           <input type="password" class="form-control" v-model="password">
         </div>
-        <input type="submit" class="btn btn-primary" value="Submit">
+        <input type="submit" class="actions special button primary" value="Submit">
       </form>
     </div>
   </div>
 </template>
 
-<style>
+<style scoped>
 
 label {
   color: #4d4d4d;
+}
+
+.button {
+  margin-top: 30px;
 }
 
 </style>
