@@ -36,7 +36,7 @@
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    min-height: 35rem;
+    min-height: 15rem;
     background-blend-mode: soft-light;
     background-size: cover;
     background-position: center center;

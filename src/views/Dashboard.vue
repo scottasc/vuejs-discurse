@@ -64,16 +64,6 @@
     </trend>
     <hr>
     
-    <h4>Thoughts by session</h4>
-    <trend
-      :data="thoughts"
-      :gradient="['#6fa8dc', '#42b983', '#2c3e50']"
-      auto-draw
-      smooth
-      auto-draw-duration=7000
-      auto-draw-easing="ease-in">
-    </trend>
-    <hr>
   </div>
 
   </div>
@@ -145,7 +135,6 @@ export default {
         .then(response => {
           this.practices = response.data;
           for (var i = 0, len = response.data.length; i < len; i++) {
-            this.thoughts.push(response.data[i].thought_count);
             this.joy.push(response.data[i].joy * 10);
             this.sadness.push(response.data[i].sadness * 10);
             this.fear.push(response.data[i].fear * 10);
