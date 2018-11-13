@@ -6,7 +6,7 @@
     <section id="banner">
 
       <div class="inner1">
-        <h2>Huely</h2>
+        <h2 class="main-title">Huely</h2>
         <h3>Free online color therapy</h3>
         
         <button class="actions special button primary" v-if="localStorage" v-on:click="createPractice()">Begin</button>
@@ -18,7 +18,7 @@
     </section>
 
       <div>
-      <transition name="fade"><modal v-if="show"></modal></transition>
+         <transition name="modalfade"><modal v-if="show"></modal></transition>
       </div>
 
      <section id="one" class="wrapper style1 special">
@@ -33,18 +33,26 @@
       </div>
     </section>
 
+    <footer id="footer">
+        <ul class="icons">
+          <li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+        </ul>
+        <ul class="copyright">
+          <li>&copy; Huely 2018</li>
+        </ul>
+      </footer>
   </div>
 </template>
 
 <style>
 
-.fade-enter-active {
+.modalfade-enter-active {
   transition: all .3s ease;
 }
-.fade-leave-active {
-  transition: all .s ease;
+.modalfade-leave-active {
+  transition: all .3s ease;
 }
-.fade-enter, .fade-leave-to {
+.modalfade-enter, .modalfade-leave-to {
   opacity: 0;
 }
 

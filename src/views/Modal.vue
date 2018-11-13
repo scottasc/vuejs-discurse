@@ -9,11 +9,9 @@
             Sign up
           </button>
       </header>
-
+      
       <div class="signup">
-       <transition name="fade">
-       <signup v-if="signup"></signup>
-       </transition>
+        <transition name="modalfade"><signup v-if="signup"></signup></transition>
       </div>
 
        <footer class="modal-footer">
@@ -23,11 +21,9 @@
       </footer>
 
       <div class="login">
-        <transition name="fade">
-        <login v-if="login"></login>
-        </transition>
+       <transition name="modalfade"><login v-if="login"></login></transition>
       </div>
-
+      
     </div>
 
   </div>
@@ -36,15 +32,15 @@
 
 <style>
 
-  .fade-enter-active {
-    transition: all .3s ease;
-  }
-  .fade-leave-active {
-    transition: all .3s ease;
-  }
-  .fade-enter, .fade-leave-to {
-    opacity: 0;
-  }
+.modalfade-enter-active {
+  transition: all .3s ease;
+}
+.modalfade-leave-active {
+  transition: all .3s ease;
+}
+.modalfade-enter, .modalfade-leave-to {
+  opacity: 0;
+}
 
   .modal-backdrop {
     position: fixed;

@@ -1,18 +1,28 @@
 <template>
   <div id="app">
 
-
-  <!--   <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/signup">Signup</router-link> 
-      <router-link to="/login">Login</router-link>
-      <router-link to="/logout">Logout</router-link>
-    </div> -->
+  <transition name="fade">
     <router-view/>
+  </transition>
+
+
   </div>
 </template>
 
-<style>
+<style scoped>
+
+.fade-enter-active, .fade-leave-active {
+  transition: all .3s ease
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-leave {
+  opacity: 0;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -23,7 +33,7 @@
 #nav {
   padding: 30px;
 }
-/*byrnes was here*/
+
 #nav a {
   font-weight: bold;
   color: #2c3e50;

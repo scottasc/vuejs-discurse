@@ -1,22 +1,13 @@
 <template>
 
-  <h1 class="less-two" v-if="practices.length < 2">You need at least 2 sessions for the dash to work. Go back to home on the side and then click "begin" again.</h1>
+  <h1 class="less-two" v-if="practices.length < 2">You need at least 2 sessions for the dash to work.</h1>
   <div v-else class="dashboard">
 
     <h1 id="dash-header">Dash</h1>
     <h2 id="dash-header2">{{practices.length}} sessions</h2>
     <hr>
     
-    <h4>Thoughts by session</h4>
-    <trend
-      :data="thoughts"
-      :gradient="['#6fa8dc', '#42b983', '#2c3e50']"
-      auto-draw
-      smooth
-      auto-draw-duration=7000
-      auto-draw-easing="ease-in">
-    </trend>
-    <hr>
+  <div class="metrics">
     
     <h4>Joy by session</h4>
     <trend
@@ -72,11 +63,34 @@
       auto-draw-easing="ease-in">
     </trend>
     <hr>
+    
+    <h4>Thoughts by session</h4>
+    <trend
+      :data="thoughts"
+      :gradient="['#6fa8dc', '#42b983', '#2c3e50']"
+      auto-draw
+      smooth
+      auto-draw-duration=7000
+      auto-draw-easing="ease-in">
+    </trend>
+    <hr>
+  </div>
 
   </div>
+</div>
 </template>
 
 <style>
+
+.fade-enter-active {
+  transition: all .5s ease;
+}
+.fade-leave-active {
+  transition: all .5s ease;
+}
+.fade-enter-to, .fade-leave-to {
+  opacity: 0;
+}
 
 .less-two {
   padding-top: 200px;
@@ -100,6 +114,10 @@ hr {
   background: linear-gradient(to right, #B7E8EB, white, #B7E8EB);
   height: 10px;
   border: none;
+}
+
+.metrics {
+  height: 25%;
 }
 
 

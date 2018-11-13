@@ -1,3 +1,5 @@
+
+
 <template>
 
   <div class="thoughts-new"> 
@@ -44,13 +46,13 @@
 
 .end-btn {
   color: black;
-  font-size: 16px;
+  font-size: 18px;
   height: 100px;  
   width: 210px;
   border: none;
   box-shadow: none;
   float: right;
-  bottom: 15px;
+  bottom: 0px;
 }
 
 .input {
@@ -91,7 +93,7 @@
 }
 
 body {
-  transition: 5s;
+  transition: 4s;
 }
 
 
