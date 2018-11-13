@@ -54,7 +54,7 @@ export default {
     };
   },
   methods: {
-    submit: function() {
+    submit: async function() {
       var params = {
         name: this.name,
         email: this.email,
@@ -65,12 +65,12 @@ export default {
         email: this.email,
         password: this.password
       }
-      axios
+      await axios
         .post("http://localhost:3000/api/users", params)
         .catch(error => {
           this.errors = error.response.data.errors;
         });
-        return axios
+        axios
           .post("http://localhost:3000/api/sessions", paramsLogin)
           .then(response => {
             axios.defaults.headers.common["Authorization"] =
@@ -90,3 +90,7 @@ export default {
   }
 };
 </script>
+
+<!-- async/await -->
+
+<!-- promises serial execution -->
