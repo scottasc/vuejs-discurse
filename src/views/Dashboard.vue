@@ -82,7 +82,7 @@
 
 <style>
 
-.fade-enter-active {
+/*.fade-enter-active {
   transition: all .5s ease;
 }
 .fade-leave-active {
@@ -90,7 +90,7 @@
 }
 .fade-enter-to, .fade-leave-to {
   opacity: 0;
-}
+}*/
 
 .less-two {
   padding-top: 200px;
@@ -116,9 +116,9 @@ hr {
   border: none;
 }
 
-.metrics {
+/*.metrics {
   height: 25%;
-}
+}*/
 
 
 </style>

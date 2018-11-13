@@ -12,7 +12,7 @@
 <style scoped>
 
 .fade-enter-active, .fade-leave-active {
-  transition: all .3s ease
+  transition: all .7s ease
 }
 
 .fade-enter {

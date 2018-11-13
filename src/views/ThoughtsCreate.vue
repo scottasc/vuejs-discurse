@@ -47,8 +47,8 @@
 .end-btn {
   color: black;
   font-size: 18px;
-  height: 100px;  
-  width: 210px;
+  height: 12vh;  
+  width: 250px;
   border: none;
   box-shadow: none;
   float: right;
