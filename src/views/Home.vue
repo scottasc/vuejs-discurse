@@ -99,7 +99,7 @@ export default {
   methods: {
     createPractice: function() {
       axios
-        .post("http://localhost:3000/api/practices")
+        .post("/api/practices")
         .then(response => {
           this.practice = response.data;
         });

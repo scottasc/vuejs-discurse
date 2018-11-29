@@ -139,7 +139,7 @@ export default {
         this.errors = ""
         var params = {content: this.content};
         axios
-          .post("http://localhost:3000/api/thoughts", params)
+          .post("/api/thoughts", params)
           .then(response => {
             this.thought = response.data;
             document.body.style.backgroundColor = `rgba(${this.thought.red}, ${this.thought.green}, ${this.thought.blue}, .5)`;
@@ -155,7 +155,7 @@ export default {
     },
     endSession: function(){
       axios
-        .patch("http://localhost:3000/api/practices")
+        .patch("/api/practices")
         .then(this.$router.push("/dashboard"));
       user.setLightState(1, {on: false});
       document.body.style.backgroundColor = '#B7E8EB'

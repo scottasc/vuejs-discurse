@@ -131,7 +131,7 @@ export default {
   },
   mounted: function() {
     axios
-        .get("http://localhost:3000/api/practices")
+        .get("/api/practices")
         .then(response => {
           this.practices = response.data;
           for (var i = 0, len = response.data.length; i < len; i++) {
