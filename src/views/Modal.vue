@@ -62,7 +62,7 @@
     display: flex;
     flex-direction: column;
     display: center;
-    padding: 60px;
+    padding: 30px;
     z-index: -500;
     position: absolute;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);

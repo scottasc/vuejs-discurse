@@ -3,6 +3,7 @@
     <div class="container">
       <form v-on:submit.prevent="submit()">
         <h1>Signup</h1>
+        <p>(case sensitive)</p>
         <ul>
           <li class="text-danger" v-for="error in errors">{{ error }}</li>
         </ul>

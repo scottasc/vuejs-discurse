@@ -1,6 +1,9 @@
 <template>
   <div class="hue">
 
+    <h1>Enter your existing Philips Hue bridge username and your bridge's IP address, then click test.</h1>
+    <p>If your Hue light turns on, you're good to go. You can now turn your light on and off with the lightbulb button during your session.</p>
+
     <h2 v-if="userName">Username: {{userName}}</h2>
 
     <h2 v-if="iPaddress">IP address: {{iPaddress}}</h2>
@@ -24,15 +27,15 @@
   <h2>{{bridgeInfo}}</h2>
   </div>
 
-  <div>
+<!--   <div>
   <button class="actions special button primary" v-on:click="whatsName()">Get username</button>
   <h2>{{userName}}</h2>
   </div>
-
+ -->
   <div>
   <button class="actions special button primary" v-on:click="turnOn()">Test</button>
   </div>
-
+<!-- 
   <div>
   <button class="actions special button primary" v-on:click="makeUser()">Create user</button>
   </div>
@@ -40,7 +43,7 @@
   <div>
   <button class="actions special button primary" v-on:click="newUser()">Make new user</button>
   </div>
-  
+   -->
 
  
 

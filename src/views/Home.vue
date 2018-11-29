@@ -1,4 +1,5 @@
 <template>
+
   <div class="home">
 
     <h6 v-if="localStorage">Logged in</h6>
@@ -22,16 +23,29 @@
       </div>
 
      <section id="one" class="wrapper style1 special">
-      <div class="inner2">
+      <div class="inner">
         <header class="major">
           <h2>DEAR GOD WHAT IS THIS PLACE</h2>
-          <p>Using the closely-guarded secrets of quack science, Huely listens to your thoughts and picks special colors just for you.</p>
+          <p>Color therapy is the idea that colors can be therapeutic. Avicenna, a medieval Persian physician, noted that the color red makes the blood flow quicker, while the color blue does the opposite. Using this simple relationship—warm colors like reds and oranges to energize you, cool colors like blues and greens to relax you—Huely listens to your thoughts, determines your emotions, and chooses therapeutic colors just for you.</p>
         </header>
         <ul class="icons major">
           <li><span class="icon fa-heart-o major style2"><span class="label">Ipsum</span></span></li>
         </ul>
       </div>
     </section>
+
+
+          <section id="three" class="wrapper style3 special">
+            <div class="inner">
+              <header class="major">
+                <h2>How does it work?</h2>
+                <p>Huely uses IBM Watson's Natural Language Understanding AI to determine the sadness, fear, anger, disgust, and joy of every thought you share. These emotional ratings are used to construct a color: sadness increases red hues, fear and disgust increase green hues, and anger increases blue hues. The result is a custom, therapeutic hue calibrated to your exact emotion.</p>
+              </header>
+              <ul class="icons major">
+          <li><span class="icon fa-heart-o major style2"><span class="label">Ipsum</span></span></li>
+        </ul>
+            </div>
+          </section>
 
     <footer id="footer">
         <ul class="icons">
