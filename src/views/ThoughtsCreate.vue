@@ -100,10 +100,10 @@ body {
 </style>
 
 <script>
-var jsHue = require('jshue');
-var hue = jsHue();
-var bridge = hue.bridge('192.168.1.77');
-var user = bridge.user('O-j-MtGZ85H0wcaFdIKhfzbC8QBMLDxcn5TkkHqs')
+// var jsHue = require('jshue');
+// var hue = jsHue();
+// var bridge = hue.bridge('192.168.1.77');
+// var user = bridge.user('O-j-MtGZ85H0wcaFdIKhfzbC8QBMLDxcn5TkkHqs')
 import axios from "axios";
 import Clouds from '../components/Clouds';
 import Wave from '../components/Wave';
@@ -127,13 +127,13 @@ export default {
     };
   },
   created: function() {
-    user.setLightState(1, {on: false});
+    // user.setLightState(1, {on: false});
   },
   methods: {
-    powerSwitch: function() {
-      user.setLightState(1, {on: this.power, xy: [1, 1]});
-      this.power = !this.power;
-    },
+    // powerSwitch: function() {
+    //   user.setLightState(1, {on: this.power, xy: [1, 1]});
+    //   this.power = !this.power;
+    // },
     submit: function() {
       if (this.content && this.content.length > 15) {
         this.errors = ""
