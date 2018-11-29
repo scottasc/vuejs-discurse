@@ -1,5 +1,7 @@
 # vuejs-discurse
 
+A color therapy app, yet to be deployed. Here's the code Vuejs code.
+
 ## Project setup
 ```
 npm install
