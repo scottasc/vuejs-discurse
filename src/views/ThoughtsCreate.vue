@@ -143,7 +143,7 @@ export default {
           .then(response => {
             this.thought = response.data;
             document.body.style.backgroundColor = `rgba(${this.thought.red}, ${this.thought.green}, ${this.thought.blue}, .5)`;
-            user.setLightState(1, { transitiontime: 50, bri: 250, xy: [parseFloat(this.thought.x_value), parseFloat(this.thought.y_value)]})
+            // user.setLightState(1, { transitiontime: 50, bri: 250, xy: [parseFloat(this.thought.x_value), parseFloat(this.thought.y_value)]})
           })
           .catch(errors => {
             this.errors = "You're either not logged in or using an unsupported language. Try again."
