@@ -62,7 +62,7 @@
 <script>
 var jsHue = require('jshue');
 var hue = jsHue();
-var bridge = hue.bridge('192.168.1.146');
+var bridge = hue.bridge('192.168.1.77');
 var user = bridge.user('O-j-MtGZ85H0wcaFdIKhfzbC8QBMLDxcn5TkkHqs')
 
 export default {

@@ -46,7 +46,7 @@
 
 .end-btn {
   color: black;
-  font-size: 18px;
+  font-size: 2vh;
   height: 12vh;  
   width: 250px;
   border: none;
@@ -68,15 +68,15 @@
 }
 
 .wave-btn {
-  background-image: url('./wave.png');
+  background-image: url('/../../../assets/css/images/wave.png');
 }
 
 .cloud-btn {
-  background-image: url('http://simpleicon.com/wp-content/uploads/cloud-2-128x128.png');
+  background-image: url('/../../../assets/css/images/cloud.png');
 }
 
 .bird-btn {
-  background-image: url('http://icons.iconarchive.com/icons/iconsmind/outline/128/Bird-icon.png');
+  background-image: url('/../../../assets/css/images/bird.png');
 }
 
 .bulb-btn {
@@ -93,7 +93,7 @@
 }
 
 body {
-  transition: 4s;
+  transition: 5s;
 }
 
 
@@ -102,7 +102,7 @@ body {
 <script>
 var jsHue = require('jshue');
 var hue = jsHue();
-var bridge = hue.bridge('192.168.1.146');
+var bridge = hue.bridge('192.168.1.77');
 var user = bridge.user('O-j-MtGZ85H0wcaFdIKhfzbC8QBMLDxcn5TkkHqs')
 import axios from "axios";
 import Clouds from '../components/Clouds';
@@ -143,7 +143,7 @@ export default {
           .then(response => {
             this.thought = response.data;
             document.body.style.backgroundColor = `rgba(${this.thought.red}, ${this.thought.green}, ${this.thought.blue}, .5)`;
-            user.setLightState(1, { transitiontime: 50, bri: 50, xy: [parseFloat(this.thought.x_value), parseFloat(this.thought.y_value)]})
+            user.setLightState(1, { transitiontime: 50, bri: 250, xy: [parseFloat(this.thought.x_value), parseFloat(this.thought.y_value)]})
           })
           .catch(errors => {
             this.errors = "You're either not logged in or using an unsupported language. Try again."
