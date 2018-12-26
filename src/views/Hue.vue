@@ -27,16 +27,16 @@
   <h2>{{bridgeInfo}}</h2>
   </div>
 
-<!--   <div>
+  <div>
   <button class="actions special button primary" v-on:click="whatsName()">Get username</button>
   <h2>{{userName}}</h2>
   </div>
- -->
+
   <div>
   <button class="actions special button primary" v-on:click="turnOn()">Test</button>
   </div>
-<!-- 
-  <div>
+
+  <!-- <div>
   <button class="actions special button primary" v-on:click="makeUser()">Create user</button>
   </div>
 
@@ -65,7 +65,7 @@
 <script>
 var jsHue = require('jshue');
 var hue = jsHue();
-var bridge = hue.bridge('192.168.1.77');
+var bridge = hue.bridge('10.0.0.210');
 var user = bridge.user('O-j-MtGZ85H0wcaFdIKhfzbC8QBMLDxcn5TkkHqs')
 
 export default {

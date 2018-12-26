@@ -100,14 +100,15 @@ body {
 </style>
 
 <script>
-// var jsHue = require('jshue');
-// var hue = jsHue();
-// var bridge = hue.bridge('192.168.1.77');
-// var user = bridge.user('O-j-MtGZ85H0wcaFdIKhfzbC8QBMLDxcn5TkkHqs')
+var jsHue = require('jshue');
+var hue = jsHue();
+var bridge = hue.bridge('10.0.0.210');
+var user = bridge.user('O-j-MtGZ85H0wcaFdIKhfzbC8QBMLDxcn5TkkHqs')
 import axios from "axios";
 import Clouds from '../components/Clouds';
 import Wave from '../components/Wave';
 import Bird from '../components/Bird';
+
 export default {
   components: {
     'clouds': Clouds,
@@ -127,13 +128,15 @@ export default {
     };
   },
   created: function() {
-    // user.setLightState(1, {on: false});
+    user.setLightState(1, {on: false});
   },
   methods: {
-    // powerSwitch: function() {
-    //   user.setLightState(1, {on: this.power, xy: [1, 1]});
-    //   this.power = !this.power;
-    // },
+    powerSwitch: function() {
+      user.setLightState(1, {on: this.power, xy: [1, 1]});
+      user.setLightState(2, {on: this.power, xy: [1, 1]});
+      user.setLightState(3, {on: this.power, xy: [1, 1]});
+      this.power = !this.power;
+    },
     submit: function() {
       if (this.content && this.content.length > 15) {
         this.errors = ""
@@ -143,7 +146,9 @@ export default {
           .then(response => {
             this.thought = response.data;
             document.body.style.backgroundColor = `rgba(${this.thought.red}, ${this.thought.green}, ${this.thought.blue}, .5)`;
-            // user.setLightState(1, { transitiontime: 50, bri: 250, xy: [parseFloat(this.thought.x_value), parseFloat(this.thought.y_value)]})
+            user.setLightState(1, { transitiontime: 50, bri: 250, xy: [parseFloat(this.thought.x_value), parseFloat(this.thought.y_value)]});
+            user.setLightState(2, { transitiontime: 50, bri: 250, xy: [parseFloat(this.thought.x_value), parseFloat(this.thought.y_value)]});
+            user.setLightState(3, { transitiontime: 50, bri: 250, xy: [parseFloat(this.thought.x_value), parseFloat(this.thought.y_value)]});
           })
           .catch(errors => {
             this.errors = "You're either not logged in or using an unsupported language. Try again."
